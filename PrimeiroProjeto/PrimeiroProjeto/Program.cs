@@ -1,7 +1,8 @@
 ﻿// Screen Sound
 string mensagemBoasVindas = "Bem vindo ao Screen Sound";
 // No C# as aspas duplas ("") são mais usuais e o ; é obrigatório
-// Console.WriteLine() para escrever no console
+// Console.WriteLine() para escrever no console e pular linha
+// Console.Write() escreve sem pular linha
 // Para criar uma função sem return utiliza-se void
 void ExibirMensagem()
 {   // Para criar um verbatim literal, utiliza-se @ antes das aspas
@@ -26,6 +27,15 @@ Digite 3 para avaliar uma banda
 Digite 4 para exibir a média de uma banda
 Digite -1 para sair
 ");
+    Console.Write("\nDigite sua opção:");
+    // Console.ReadLine lê a informação retornada pelo usuário
+    // É possível colocar '!' para informar que valor nulo não é aceito
+    int opcaoMenu = int.Parse(Console.ReadLine()!);
+    // int.Parse() para transformar em inteiro
+    if (opcaoMenu == 1)
+    {
+        Console.WriteLine("Opção" + opcaoMenu);
+    }
 }
 
 ExibirMensagem();
