@@ -32,9 +32,20 @@ Digite -1 para sair
     // É possível colocar '!' para informar que valor nulo não é aceito
     int opcaoMenu = int.Parse(Console.ReadLine()!);
     // int.Parse() para transformar em inteiro
-    if (opcaoMenu == 1)
+    switch(opcaoMenu)
     {
-        Console.WriteLine("Opção" + opcaoMenu);
+        case 1: Console.WriteLine("Opção " + opcaoMenu);
+            break;
+        case 2: Console.WriteLine($"Opção {opcaoMenu}"); // Outra forma de escrever
+            break;
+        case 3: Console.WriteLine("Opção {0}", opcaoMenu); // Outra forma de escrever
+            break;
+        case 4: Console.WriteLine("Opção " + opcaoMenu);
+            break;
+        case -1: Console.WriteLine("Opção " + opcaoMenu);
+            break;
+        default: Console.WriteLine("Opção Inválida");
+            break;
     }
 }
 
