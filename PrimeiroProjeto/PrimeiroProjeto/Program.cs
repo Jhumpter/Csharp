@@ -20,6 +20,7 @@ void ExibirMensagem()
 
 void ExibirMenu()
 {
+    ExibirMensagem();
     Console.WriteLine(@"
 Digite 1 para adicionar uma banda
 Digite 2 para ver todas as bandas
@@ -34,7 +35,7 @@ Digite -1 para sair
     // int.Parse() para transformar em inteiro
     switch(opcaoMenu)
     {
-        case 1: Console.WriteLine("Opção " + opcaoMenu);
+        case 1: RegistrarBanda();
             break;
         case 2: Console.WriteLine($"Opção {opcaoMenu}"); // Outra forma de escrever
             break;
@@ -49,5 +50,15 @@ Digite -1 para sair
     }
 }
 
-ExibirMensagem();
+void RegistrarBanda()
+{
+    Console.Clear(); //Para limpar o console
+    Console.WriteLine("Registro de Bandas");
+    Console.Write("Digite o nome da banda a ser registrada:");
+    string nomeDaBanda = Console.ReadLine()!;
+    Console.WriteLine($"A banda {nomeDaBanda} foi registrada!");
+    Thread.Sleep(2000); //Para esperar 2000 milisegundos
+    Console.Clear();
+    ExibirMenu();
+}
 ExibirMenu();
