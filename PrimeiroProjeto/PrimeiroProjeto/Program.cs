@@ -4,6 +4,8 @@ string mensagemBoasVindas = "Bem vindo ao Screen Sound";
 // Console.WriteLine() para escrever no console e pular linha
 // Console.Write() escreve sem pular linha
 // Para criar uma função sem return utiliza-se void
+List<string> bandasRegistradas = new List<string>();
+//List<tipo dos elementos> nomedalista = new List<tipo>();
 void ExibirMensagem()
 {   // Para criar um verbatim literal, utiliza-se @ antes das aspas
     Console.WriteLine(@"
@@ -37,7 +39,7 @@ Digite -1 para sair
     {
         case 1: RegistrarBanda();
             break;
-        case 2: Console.WriteLine($"Opção {opcaoMenu}"); // Outra forma de escrever
+        case 2: MostrarBandas();
             break;
         case 3: Console.WriteLine("Opção {0}", opcaoMenu); // Outra forma de escrever
             break;
@@ -53,12 +55,40 @@ Digite -1 para sair
 void RegistrarBanda()
 {
     Console.Clear(); //Para limpar o console
-    Console.WriteLine("Registro de Bandas");
+    TituloOpcoes("Registro de bandas");
     Console.Write("Digite o nome da banda a ser registrada:");
     string nomeDaBanda = Console.ReadLine()!;
+    bandasRegistradas.Add(nomeDaBanda); //.Add para adicionar o (elemento)
     Console.WriteLine($"A banda {nomeDaBanda} foi registrada!");
     Thread.Sleep(2000); //Para esperar 2000 milisegundos
     Console.Clear();
     ExibirMenu();
+}
+
+void MostrarBandas()
+{
+    Console.Clear();
+    TituloOpcoes("Bandas Registradas");
+    /*for (int i = 0; i < bandasRegistradas.Count; i++)
+    {
+        Console.WriteLine($"Banda: {bandasRegistradas[i]}");
+    }*/
+    foreach (string banda in bandasRegistradas)
+    {
+        Console.WriteLine($"Banda: {banda}");
+    }
+    Console.WriteLine("\nDigite qualquer tecla para voltar ao menu");
+    Console.ReadKey();
+    Console.Clear();
+    ExibirMenu();
+}
+
+void TituloOpcoes(string titulo)
+{
+    int qtdeDeLetras = titulo.Length;
+    string asteriscos = string.Empty.PadLeft(qtdeDeLetras, '*');
+    Console.WriteLine(asteriscos);
+    Console.WriteLine(titulo);
+    Console.WriteLine(asteriscos + "\n");
 }
 ExibirMenu();

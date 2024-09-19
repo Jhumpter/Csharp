@@ -1,0 +1,32 @@
+*Console.WriteLine("texto_pulando_linha");
+*Console.WriteLine(@"verbatim literal");
+*Console.Write("texto");
+*int.Parse(); para transformar em inteiro
+Colocar variáveis em string:
+    -Console.WriteLine("Opção " + opcaoMenu);
+    -Console.WriteLine($"Opção {opcaoMenu}");
+    -Console.WriteLine("Opção {0}", opcaoMenu);
+*Console.Clear(); //Para limpar o console
+*Console.ReadLine(); lê a informação retornada pelo usuário. É possível colocar '!' para informar que valor nulo não é aceito
+*switch(var)
+    case evento: ação;
+        break;
+    case evento: ação;
+        break;
+    default: ação;
+        break;
+*List<tipo dos elementos> nomedalista = new List<tipo>();
+*nomedalista.Add(elemento); para adicionar o elemento
+*Thread.Sleep(2000); //Para esperar 2000 milisegundos
+*for (contador; teste; passo)
+    {
+        ação
+    }
+*Console.ReadKey(); um input que aceita qualquer tecla
+*foreach (tipo elemento in lista)
+    {
+        ação
+    }
+*string.Length; número de caracteres da string
+*string.Empty;
+*string.PadRight() ou .PadLeft() recebe 2 parâmetros, sendo o primeiro o número de caracteres que a string deve ter e o segundo o caracter que será utilizado para preencher o que estiver vazio
