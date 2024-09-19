@@ -5,16 +5,9 @@ class Musica
     //private restringe o atributo a apenas a classe
     public string artista;
     public int duracao;
-    private bool disponivel;
-    public void EscreverDisponivel(bool value)
-    {
-        //Aqui com um if é possível permitir ou negar alguém de alterar se está disponível ou não
-        disponivel = value;
-    }
-    public bool LerDisponivel()
-    {  
-        return disponivel;
-    }
+    public bool Disponivel { get; set; } 
+    //Atribuir get e set torna o elemento uma propriedade, mudando a regra de nomenclatura
+    
     public void FichaTecnica()
     {
         Console.WriteLine($"Nome: {nome}");
