@@ -4,8 +4,7 @@ string mensagemBoasVindas = "Bem vindo ao Screen Sound";
 // Console.WriteLine() para escrever no console e pular linha
 // Console.Write() escreve sem pular linha
 // Para criar uma função sem return utiliza-se void
-List<string> bandasRegistradas = new List<string>();
-//List<tipo dos elementos> nomedalista = new List<tipo>();
+Dictionary<string, List<int>> bandasRegistradas = new Dictionary<string, List<int>>(); // As bandas serão as chaves e o elemento serão listas com as notas
 void ExibirMensagem()
 {   // Para criar um verbatim literal, utiliza-se @ antes das aspas
     Console.WriteLine(@"
@@ -41,7 +40,7 @@ Digite -1 para sair
             break;
         case 2: MostrarBandas();
             break;
-        case 3: Console.WriteLine("Opção {0}", opcaoMenu); // Outra forma de escrever
+        case 3: AvaliarBanda();
             break;
         case 4: Console.WriteLine("Opção " + opcaoMenu);
             break;
@@ -58,7 +57,7 @@ void RegistrarBanda()
     TituloOpcoes("Registro de bandas");
     Console.Write("Digite o nome da banda a ser registrada:");
     string nomeDaBanda = Console.ReadLine()!;
-    bandasRegistradas.Add(nomeDaBanda); //.Add para adicionar o (elemento)
+    bandasRegistradas.Add(nomeDaBanda, new List<int>()); //.Add para adicionar o (elemento)
     Console.WriteLine($"A banda {nomeDaBanda} foi registrada!");
     Thread.Sleep(2000); //Para esperar 2000 milisegundos
     Console.Clear();
@@ -73,7 +72,7 @@ void MostrarBandas()
     {
         Console.WriteLine($"Banda: {bandasRegistradas[i]}");
     }*/
-    foreach (string banda in bandasRegistradas)
+    foreach (string banda in bandasRegistradas.Keys)
     {
         Console.WriteLine($"Banda: {banda}");
     }
@@ -91,4 +90,34 @@ void TituloOpcoes(string titulo)
     Console.WriteLine(titulo);
     Console.WriteLine(asteriscos + "\n");
 }
+
+void AvaliarBanda()
+{
+    Console.Clear();
+    TituloOpcoes("Avaliar Banda");
+    Console.Write("Digite o nome da banda a ser avaliada (-1 para sair): ");
+    string bandaAvaliada = Console.ReadLine()!;
+    if (bandaAvaliada == "-1")
+    {
+        Console.Clear();
+        ExibirMenu();
+    } else {
+        if (bandasRegistradas.ContainsKey(bandaAvaliada))
+        {
+            Console.Write($"Qual nota você dá para a banda {bandaAvaliada}? ");
+            int nota = int.Parse(Console.ReadLine()!);
+            bandasRegistradas[bandaAvaliada].Add(nota);
+            Console.WriteLine($"A nota {nota} foi registrada para a banda {bandaAvaliada} com sucesso!");
+            Thread.Sleep(2000);
+            Console.Clear();
+            ExibirMenu();
+        } else {
+        Console.WriteLine($"A banda {bandaAvaliada} não foi encontrada");
+        Thread.Sleep(2000);
+        AvaliarBanda();
+        }
+    }
+    
+}
+
 ExibirMenu();

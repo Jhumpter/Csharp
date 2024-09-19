@@ -16,6 +16,7 @@ Colocar variáveis em string:
     default: ação;
         break;
 *List<tipo dos elementos> nomedalista = new List<tipo>();
+*Dictionary<tipo dos elementos> nomedodictionário = new Dictionary<tipo>();
 *nomedalista.Add(elemento); para adicionar o elemento
 *Thread.Sleep(2000); //Para esperar 2000 milisegundos
 *for (contador; teste; passo)
@@ -30,3 +31,4 @@ Colocar variáveis em string:
 *string.Length; número de caracteres da string
 *string.Empty;
 *string.PadRight() ou .PadLeft() recebe 2 parâmetros, sendo o primeiro o número de caracteres que a string deve ter e o segundo o caracter que será utilizado para preencher o que estiver vazio
+*Dictionary.ContainsKey(key)
