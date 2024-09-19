@@ -1,4 +1,7 @@
 ﻿// Screen Sound
+using System.Diagnostics.CodeAnalysis;
+using System.Net.Http.Headers;
+
 string mensagemBoasVindas = "Bem vindo ao Screen Sound";
 // No C# as aspas duplas ("") são mais usuais e o ; é obrigatório
 // Console.WriteLine() para escrever no console e pular linha
@@ -42,9 +45,10 @@ Digite -1 para sair
             break;
         case 3: AvaliarBanda();
             break;
-        case 4: Console.WriteLine("Opção " + opcaoMenu);
+        case 4: MediaBandas();
             break;
-        case -1: Console.WriteLine("Opção " + opcaoMenu);
+        case -1: Console.WriteLine("Até a próxima!");
+            Thread.Sleep(1500);
             break;
         default: Console.WriteLine("Opção Inválida");
             break;
@@ -59,7 +63,7 @@ void RegistrarBanda()
     string nomeDaBanda = Console.ReadLine()!;
     bandasRegistradas.Add(nomeDaBanda, new List<int>()); //.Add para adicionar o (elemento)
     Console.WriteLine($"A banda {nomeDaBanda} foi registrada!");
-    Thread.Sleep(2000); //Para esperar 2000 milisegundos
+    Thread.Sleep(1500); //Para esperar 1500 milisegundos
     Console.Clear();
     ExibirMenu();
 }
@@ -108,16 +112,71 @@ void AvaliarBanda()
             int nota = int.Parse(Console.ReadLine()!);
             bandasRegistradas[bandaAvaliada].Add(nota);
             Console.WriteLine($"A nota {nota} foi registrada para a banda {bandaAvaliada} com sucesso!");
-            Thread.Sleep(2000);
+            Thread.Sleep(1500);
             Console.Clear();
             ExibirMenu();
         } else {
         Console.WriteLine($"A banda {bandaAvaliada} não foi encontrada");
-        Thread.Sleep(2000);
+        Thread.Sleep(1500);
         AvaliarBanda();
         }
     }
     
+}
+
+void MediaBandas()
+{
+    Console.Clear();
+    TituloOpcoes("Notas das bandas");
+    Console.Write("Digite uma banda para conferir a avaliação média dela (-1 para sair): ");
+    string bandaConferida = Console.ReadLine()!;
+    if (bandaConferida == "-1")
+    {
+        Console.Clear();
+        ExibirMenu();
+    } else {
+        if (bandasRegistradas.ContainsKey(bandaConferida))
+        {   
+            /*int somatorio = 0;
+            int c = 0;
+            foreach (int nota in bandasRegistradas[bandaConferida])
+            {
+                somatorio += nota;
+                c++;
+            }
+            if (c == 0)
+            {
+                Console.WriteLine($"A banda {bandaConferida} ainda não possui avaliações");
+                Thread.Sleep(1500);
+                Console.Clear();
+                MediaBandas();
+            } else {
+                float mediaNotas = somatorio/c;
+                Console.WriteLine($"A banda {bandaConferida} possui nota {mediaNotas}");
+                Thread.Sleep(1500);
+                Console.Clear();
+                ExibirMenu();
+            }*/
+            List<int> notasDaBanda = bandasRegistradas[bandaConferida];
+            double media = notasDaBanda.Average();
+            if (media == 0)
+            {
+                Console.WriteLine($"A banda {bandaConferida} ainda não possui avaliações");
+                Thread.Sleep(1500);
+                Console.Clear();
+                MediaBandas();
+            } else {
+                Console.WriteLine($"A banda {bandaConferida} possui em média a nota {media}");
+                Thread.Sleep(1500);
+                Console.Clear();
+                ExibirMenu();
+            }
+        } else {
+            Console.WriteLine($"A banda {bandaConferida} não foi encontrada");
+            Thread.Sleep(1500);
+            MediaBandas();
+        }
+    }
 }
 
 ExibirMenu();
