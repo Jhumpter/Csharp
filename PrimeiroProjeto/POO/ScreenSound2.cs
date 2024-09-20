@@ -1,7 +1,13 @@
 ﻿Musica musica1 = new Musica();
-musica1.nome = "Enter Sandman";
-musica1.artista = "Metallica";
-musica1.duracao = 332;
+musica1.Nome = "Enter Sandman";
+musica1.Artista = "Metallica";
+musica1.Duracao = 332;
 musica1.Disponivel = true;
 Console.WriteLine(musica1.Disponivel);
+Musica musica2 = new Musica();
+musica2.Nome = "Lucretia";
+musica2.Artista = "Megadeth";
+musica2.Duracao = 236;
+musica2.Disponivel = false;
 musica1.FichaTecnica();
+musica2.FichaTecnica();
