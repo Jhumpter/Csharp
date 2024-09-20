@@ -1,13 +1,15 @@
-﻿Musica musica1 = new Musica();
-musica1.Nome = "Enter Sandman";
-musica1.Artista = "Metallica";
-musica1.Duracao = 332;
-musica1.Disponivel = true;
-Console.WriteLine(musica1.Disponivel);
+﻿Album album = new Album();
+album.Nome = "Metallica";
+
+Musica musica1 = new Musica();
+musica1.Nome = "Sad But True";
+musica1.Duracao = 524;
+
 Musica musica2 = new Musica();
-musica2.Nome = "Lucretia";
-musica2.Artista = "Megadeth";
-musica2.Duracao = 236;
-musica2.Disponivel = false;
-musica1.FichaTecnica();
-musica2.FichaTecnica();
+musica2.Nome = "Enter Sandman";
+musica2.Duracao = 330;
+
+album.AdicionarMusica(musica1);
+album.AdicionarMusica(musica2);
+
+album.ExibirDiscografia();
