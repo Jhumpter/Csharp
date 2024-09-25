@@ -1,24 +1,36 @@
 ﻿Album album = new Album("Black Album");
 
-Banda metallica = new Banda("Metallica");
+Band metallica = new Band("Metallica");
 
-Musica musica1 = new Musica(metallica, "Sad But True")
+Song music1 = new Song(metallica, "Sad But True")
 { // É possível dar um valor a um atributo da seguinte forma, ao invés de declarar cada atributo
-    Duracao = 524,
-    Disponivel = true,
+    Duration = 524,
+    Available = true,
 };
 
-Musica musica2 = new Musica(metallica, "Enter Sandman")
+Song music2 = new Song(metallica, "Enter Sandman")
 {
-    Duracao = 330,
-    Disponivel = false,
+    Duration = 330,
+    Available = false,
 };
 
-album.AdicionarMusica(musica1);
-album.AdicionarMusica(musica2);
-metallica.AdicionarAlbum(album);
+Episode ep1 = new Episode("Village Batle", 1, 150);
+ep1.AddGuest("Johnny");
+ep1.AddGuest("Guri");
+Episode ep2 = new Episode("Fight", 2, 198);
+ep2.AddGuest("Pablo Marçal");
+ep2.AddGuest("Datena");
+Podcast podpah = new Podcast("Podpah", "Igão e Mítico");
+podpah.AddEpisode(ep1);
+podpah.AddEpisode(ep2);
+podpah.ShowDetails();
 
-musica1.FichaTecnica();
-musica2.FichaTecnica();
-album.ExibirMusicasDaBanda();
-metallica.ExibirDiscografia();
+/*album.AddSong(music1);
+album.AddSong(music2);
+metallica.AddAlbum(album);
+
+music1.Technicalsheet();
+music2.Technicalsheet();
+album.ShowSongsFromBand();
+metallica.ShowDiscography();*/
+

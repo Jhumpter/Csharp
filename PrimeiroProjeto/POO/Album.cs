@@ -1,26 +1,24 @@
-using System.ComponentModel;
-
 class Album
 {
-    private List<Musica> musicas = new List<Musica>();
-    public Album(string nome)
+    private List<Song> songs = new List<Song>();
+    public Album(string name)
     {
-        Nome = nome;
+        Name = name;
     }
-    public string Nome { get; }
-    public int DuracaoTotal => musicas.Sum(m => m.Duracao);
-    public void AdicionarMusica(Musica musica)
+    public string Name { get; }
+    public int TotalDuration => songs.Sum(m => m.Duration);
+    public void AddSong(Song song)
     {
-        musicas.Add(musica);
+        songs.Add(song);
     }
-    public void ExibirMusicasDaBanda()
+    public void ShowSongsFromBand()
     {
-        Console.WriteLine($"Músicas do álbum {Nome}\n");
-        foreach (Musica musica in musicas)
+        Console.WriteLine($"Songs from {Name}\n");
+        foreach (Song song in songs)
         {
-            Console.WriteLine($"Música: {musica.Nome}");
+            Console.WriteLine($"Song: {song.Name}");
         }
-        Console.WriteLine($"Duração do álbum: {DuracaoTotal} segundos");
+        Console.WriteLine($"Album duration: {TotalDuration} seconds");
     }
 
 }
