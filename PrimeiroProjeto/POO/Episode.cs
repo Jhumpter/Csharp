@@ -5,13 +5,14 @@ class Episode {
         Number = number;
         Duration = duration;
     }
-    private string guests = "";
+    private List<string> guests = new();
     public string Name { get; }
     public int Number { get; }
     public int Duration { get; }
-    public string Summary => $"Episode {Number}: {Name} ({Duration} seconds) \nGuests:\n{guests}";
+    public string Summary => $"Episode {Number}: {Name} ({Duration} seconds) \nGuests: {string.Join(", ", guests)}";
+    // string.Join adds the list "guests" to the string, using the separator ", "
     public void AddGuest(string guest)
     {
-        guests += $"{guest}\n";
+        guests.Add(guest);
     }
 }

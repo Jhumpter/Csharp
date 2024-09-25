@@ -20,6 +20,7 @@ ep1.AddGuest("Guri");
 Episode ep2 = new Episode("Fight", 2, 198);
 ep2.AddGuest("Pablo Marçal");
 ep2.AddGuest("Datena");
+ep2.AddGuest("Cadeira");
 Podcast podpah = new Podcast("Podpah", "Igão e Mítico");
 podpah.AddEpisode(ep1);
 podpah.AddEpisode(ep2);

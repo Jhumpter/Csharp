@@ -7,18 +7,17 @@ class Podcast{
     }
     public string Name { get; }
     public string Host { get; }
-    public int TotalEpisodes = 0;
+    public int TotalEpisodes => episodes.Count;
     public void AddEpisode(Episode episode)
     {
         episodes.Add(episode);
-        TotalEpisodes++;
     }
     public void ShowDetails()
     {
         Console.WriteLine($"Podcast: {Name}");
         Console.WriteLine($"Host: {Host}");
-        Console.WriteLine($"Episodes:");
-        foreach (Episode episode in episodes)
+        Console.WriteLine($"Episodes({TotalEpisodes}):");
+        foreach (Episode episode in episodes.OrderBy(e => e.Number))
         {
             Console.WriteLine(episode.Summary);
         }
