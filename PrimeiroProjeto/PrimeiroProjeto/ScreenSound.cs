@@ -1,13 +1,8 @@
-﻿// Screen Sound
-using System.Diagnostics.CodeAnalysis;
-using System.Net.Http.Headers;
+﻿using PrimeiroProjeto.Models;
+// "using is like an export
 
-string welcomeMessage = "Welcome to Screen Sound";
-// In C#, double quotes ("") are more common, and ';' is mandatory
-// Console.WriteLine() to write on console and skip a line
-// Console.Write() writes without skipping a line
-// To create a function without a "return", it uses void
-Dictionary<string, List<int>> registeredBands = new Dictionary<string, List<int>>(); // Bands will be the keys and the elements will be lists with the ratings
+Dictionary<string, Band> registeredBands = new();
+// Bands will be the keys and the elements will be lists with the ratings
 void ShowMessage()
 {   // To create a verbatim string literal, it uses @ before the quotes
     Console.WriteLine(@"
@@ -19,7 +14,7 @@ void ShowMessage()
 ██████╔╝╚█████╔╝██║░░██║███████╗███████╗██║░╚███║  ██████╔╝╚█████╔╝╚██████╔╝██║░╚███║██████╔╝
 ╚═════╝░░╚════╝░╚═╝░░╚═╝╚══════╝╚══════╝╚═╝░░╚══╝  ╚═════╝░░╚════╝░░╚═════╝░╚═╝░░╚══╝╚═════╝░
     ");
-    Console.WriteLine(welcomeMessage);
+    Console.WriteLine("Welcome to Screen Sound");
 }
 
 void ShowMenu()
@@ -27,9 +22,10 @@ void ShowMenu()
     ShowMessage();
     Console.WriteLine(@"
 Type 1 to add a band
-Type 2 to show all the bands
-Type 3 to rate a band
-Type 4 to show a band's average rating
+Type 2 to register an album for a band
+Type 3 to show all the bands
+Type 4 to rate a band
+Type 5 to show a band's details
 Type -1 to exit
 ");
     Console.Write("\nType your option: ");
@@ -41,11 +37,13 @@ Type -1 to exit
     {
         case 1: RegisterBand();
             break;
-        case 2: ShowBands();
+        case 2: RegisterAlbum();
             break;
-        case 3: RateBand();
+        case 3: ShowBands();
             break;
-        case 4: BandsAverage();
+        case 4: RateBand();
+            break;
+        case 5: ShowDetails();
             break;
         case -1: Console.WriteLine("See ya!");
             Thread.Sleep(1500);
@@ -61,11 +59,35 @@ void RegisterBand()
     OptionsTitle("Band registration");
     Console.Write("Type the band's name to register:");
     string bandName = Console.ReadLine()!;
-    registeredBands.Add(bandName, new List<int>()); //.Add to add the (element)
+    Band band = new Band(bandName);
+    registeredBands.Add(bandName, band); //.Add to add the (element)
     Console.WriteLine($"The band {bandName} was registered!");
     Thread.Sleep(1500); //To wait 1500 miliseconds
     Console.Clear();
     ShowMenu();
+}
+
+void RegisterAlbum()
+{
+    Console.Clear();
+    OptionsTitle("Album registration");
+    Console.Write("Type the name of the band the album is from");
+    string bandAlbumRegister = Console.ReadLine()!;
+    if (registeredBands.ContainsKey(bandAlbumRegister))
+    {
+        Console.Write("Now, type the album's name");
+        string albumTitle = Console.ReadLine()!;
+        Band band = registeredBands[bandAlbumRegister];
+        band.AddAlbum(new Album(albumTitle));
+        Console.WriteLine($"The album {albumTitle} by {bandAlbumRegister} was registered successfully!");
+        Thread.Sleep(1500);
+        Console.Clear();
+    } else {
+        Console.WriteLine($"The band {bandAlbumRegister} was not found");
+        Thread.Sleep(1500);
+        RegisterAlbum();
+    }
+    
 }
 
 void ShowBands()
@@ -107,11 +129,12 @@ void RateBand()
         ShowMenu();
     } else {
         if (registeredBands.ContainsKey(ratedBand))
-        {
+        {   
+            Band band = registeredBands[ratedBand];
             Console.Write($"What rating do you give to {ratedBand}?");
-            int r = int.Parse(Console.ReadLine()!);
-            registeredBands[ratedBand].Add(r);
-            Console.WriteLine($"The rating {r} was registered for the band {ratedBand} successfully!");
+            int rating = int.Parse(Console.ReadLine()!);
+            band.AddRating(rating);
+            Console.WriteLine($"The rating {rating} was registered for the band {ratedBand} successfully!");
             Thread.Sleep(1500);
             Console.Clear();
             ShowMenu();
@@ -124,7 +147,7 @@ void RateBand()
     
 }
 
-void BandsAverage()
+void ShowDetails()
 {
     Console.Clear();
     OptionsTitle("Band ratings");
@@ -137,44 +160,15 @@ void BandsAverage()
     } else {
         if (registeredBands.ContainsKey(checkedBand))
         {   
-            /*int summation = 0;
-            int c = 0;
-            foreach (int rate in registeredBands[checkedBand])
-            {
-                summation += r;
-                c++;
-            }
-            if (c == 0)
-            {
-                Console.WriteLine($"The band {checkedBand} doesn't have any ratings yet");
-                Thread.Sleep(1500);
-                Console.Clear();
-                BandsAverage();
-            } else {
-                float averages = summation/c;
-                Console.WriteLine($"The band {checkedBand} has a rating of {averages}");
+            Band band = registeredBands[checkedBand];
+                Console.WriteLine($"The band {checkedBand} has a rating of {band.Average}");
                 Thread.Sleep(1500);
                 Console.Clear();
                 ShowMenu();
-            }*/
-            List<int> bandRating = registeredBands[checkedBand];
-            double average = bandRating.Average();
-            if (average == 0)
-            {
-                Console.WriteLine($"A band {checkedBand} doesn't have any ratings yet");
-                Thread.Sleep(1500);
-                Console.Clear();
-                BandsAverage();
-            } else {
-                Console.WriteLine($"The band {checkedBand} has a rating of {average}");
-                Thread.Sleep(1500);
-                Console.Clear();
-                ShowMenu();
-            }
         } else {
             Console.WriteLine($"The band {checkedBand} was not found");
             Thread.Sleep(1500);
-            BandsAverage();
+            ShowDetails();
         }
     }
 }
