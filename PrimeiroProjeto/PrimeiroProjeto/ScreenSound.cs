@@ -2,14 +2,14 @@
 using System.Diagnostics.CodeAnalysis;
 using System.Net.Http.Headers;
 
-string mensagemBoasVindas = "Bem vindo ao Screen Sound";
-// No C# as aspas duplas ("") são mais usuais e o ; é obrigatório
-// Console.WriteLine() para escrever no console e pular linha
-// Console.Write() escreve sem pular linha
-// Para criar uma função sem return utiliza-se void
-Dictionary<string, List<int>> bandasRegistradas = new Dictionary<string, List<int>>(); // As bandas serão as chaves e o elemento serão listas com as notas
-void ExibirMensagem()
-{   // Para criar um verbatim literal, utiliza-se @ antes das aspas
+string welcomeMessage = "Welcome to Screen Sound";
+// In C#, double quotes ("") are more common, and ';' is mandatory
+// Console.WriteLine() to write on console and skip a line
+// Console.Write() writes without skipping a line
+// To create a function without a "return", it uses void
+Dictionary<string, List<int>> registeredBands = new Dictionary<string, List<int>>(); // Bands will be the keys and the elements will be lists with the ratings
+void ShowMessage()
+{   // To create a verbatim string literal, it uses @ before the quotes
     Console.WriteLine(@"
 
 ░██████╗░█████╗░██████╗░███████╗███████╗███╗░░██╗  ░██████╗░█████╗░██╗░░░██╗███╗░░██╗██████╗░
@@ -19,74 +19,74 @@ void ExibirMensagem()
 ██████╔╝╚█████╔╝██║░░██║███████╗███████╗██║░╚███║  ██████╔╝╚█████╔╝╚██████╔╝██║░╚███║██████╔╝
 ╚═════╝░░╚════╝░╚═╝░░╚═╝╚══════╝╚══════╝╚═╝░░╚══╝  ╚═════╝░░╚════╝░░╚═════╝░╚═╝░░╚══╝╚═════╝░
     ");
-    Console.WriteLine(mensagemBoasVindas);
+    Console.WriteLine(welcomeMessage);
 }
 
-void ExibirMenu()
+void ShowMenu()
 {
-    ExibirMensagem();
+    ShowMessage();
     Console.WriteLine(@"
-Digite 1 para adicionar uma banda
-Digite 2 para ver todas as bandas
-Digite 3 para avaliar uma banda
-Digite 4 para exibir a média de uma banda
-Digite -1 para sair
+Type 1 to add a band
+Type 2 to show all the bands
+Type 3 to rate a band
+Type 4 to show a band's average rating
+Type -1 to exit
 ");
-    Console.Write("\nDigite sua opção:");
-    // Console.ReadLine lê a informação retornada pelo usuário
-    // É possível colocar '!' para informar que valor nulo não é aceito
-    int opcaoMenu = int.Parse(Console.ReadLine()!);
-    // int.Parse() para transformar em inteiro
-    switch(opcaoMenu)
+    Console.Write("\nType your option: ");
+    // Console.ReadLine read the information provided by the user
+    // It's possible to put "!" to indicate that a null value is not accepted
+    int menuOption = int.Parse(Console.ReadLine()!);
+    // int.Parse() to convert it into a integer
+    switch(menuOption)
     {
-        case 1: RegistrarBanda();
+        case 1: RegisterBand();
             break;
-        case 2: MostrarBandas();
+        case 2: ShowBands();
             break;
-        case 3: AvaliarBanda();
+        case 3: RateBand();
             break;
-        case 4: MediaBandas();
+        case 4: BandsAverage();
             break;
-        case -1: Console.WriteLine("Até a próxima!");
+        case -1: Console.WriteLine("See ya!");
             Thread.Sleep(1500);
             break;
-        default: Console.WriteLine("Opção Inválida");
+        default: Console.WriteLine("Invalid option");
             break;
     }
 }
 
-void RegistrarBanda()
+void RegisterBand()
 {
-    Console.Clear(); //Para limpar o console
-    TituloOpcoes("Registro de bandas");
-    Console.Write("Digite o nome da banda a ser registrada:");
-    string nomeDaBanda = Console.ReadLine()!;
-    bandasRegistradas.Add(nomeDaBanda, new List<int>()); //.Add para adicionar o (elemento)
-    Console.WriteLine($"A banda {nomeDaBanda} foi registrada!");
-    Thread.Sleep(1500); //Para esperar 1500 milisegundos
+    Console.Clear(); //Clear the console
+    OptionsTitle("Band registration");
+    Console.Write("Type the band's name to register:");
+    string bandName = Console.ReadLine()!;
+    registeredBands.Add(bandName, new List<int>()); //.Add to add the (element)
+    Console.WriteLine($"The band {bandName} was registered!");
+    Thread.Sleep(1500); //To wait 1500 miliseconds
     Console.Clear();
-    ExibirMenu();
+    ShowMenu();
 }
 
-void MostrarBandas()
+void ShowBands()
 {
     Console.Clear();
-    TituloOpcoes("Bandas Registradas");
-    /*for (int i = 0; i < bandasRegistradas.Count; i++)
+    OptionsTitle("Registered bands");
+    /*for (int i = 0; i < registeredBands.Count; i++)
     {
-        Console.WriteLine($"Banda: {bandasRegistradas[i]}");
+        Console.WriteLine($"Band: {registeredBands[i]}");
     }*/
-    foreach (string banda in bandasRegistradas.Keys)
+    foreach (string band in registeredBands.Keys)
     {
-        Console.WriteLine($"Banda: {banda}");
+        Console.WriteLine($"Band: {band}");
     }
-    Console.WriteLine("\nDigite qualquer tecla para voltar ao menu");
+    Console.WriteLine("\nType anything to back to the menu");
     Console.ReadKey();
     Console.Clear();
-    ExibirMenu();
+    ShowMenu();
 }
 
-void TituloOpcoes(string titulo)
+void OptionsTitle(string titulo)
 {
     int qtdeDeLetras = titulo.Length;
     string asteriscos = string.Empty.PadLeft(qtdeDeLetras, '*');
@@ -95,88 +95,88 @@ void TituloOpcoes(string titulo)
     Console.WriteLine(asteriscos + "\n");
 }
 
-void AvaliarBanda()
+void RateBand()
 {
     Console.Clear();
-    TituloOpcoes("Avaliar Banda");
-    Console.Write("Digite o nome da banda a ser avaliada (-1 para sair): ");
-    string bandaAvaliada = Console.ReadLine()!;
-    if (bandaAvaliada == "-1")
+    OptionsTitle("Rate Band");
+    Console.Write("Type the band's name to rate (-1 to exit): ");
+    string ratedBand = Console.ReadLine()!;
+    if (ratedBand == "-1")
     {
         Console.Clear();
-        ExibirMenu();
+        ShowMenu();
     } else {
-        if (bandasRegistradas.ContainsKey(bandaAvaliada))
+        if (registeredBands.ContainsKey(ratedBand))
         {
-            Console.Write($"Qual nota você dá para a banda {bandaAvaliada}? ");
-            int nota = int.Parse(Console.ReadLine()!);
-            bandasRegistradas[bandaAvaliada].Add(nota);
-            Console.WriteLine($"A nota {nota} foi registrada para a banda {bandaAvaliada} com sucesso!");
+            Console.Write($"What rating do you give to {ratedBand}?");
+            int r = int.Parse(Console.ReadLine()!);
+            registeredBands[ratedBand].Add(r);
+            Console.WriteLine($"The rating {r} was registered for the band {ratedBand} successfully!");
             Thread.Sleep(1500);
             Console.Clear();
-            ExibirMenu();
+            ShowMenu();
         } else {
-        Console.WriteLine($"A banda {bandaAvaliada} não foi encontrada");
+        Console.WriteLine($"The band {ratedBand} was not found");
         Thread.Sleep(1500);
-        AvaliarBanda();
+        RateBand();
         }
     }
     
 }
 
-void MediaBandas()
+void BandsAverage()
 {
     Console.Clear();
-    TituloOpcoes("Notas das bandas");
-    Console.Write("Digite uma banda para conferir a avaliação média dela (-1 para sair): ");
-    string bandaConferida = Console.ReadLine()!;
-    if (bandaConferida == "-1")
+    OptionsTitle("Band ratings");
+    Console.Write("Type a band to check the average rating (-1 to exit): ");
+    string checkedBand = Console.ReadLine()!;
+    if (checkedBand == "-1")
     {
         Console.Clear();
-        ExibirMenu();
+        ShowMenu();
     } else {
-        if (bandasRegistradas.ContainsKey(bandaConferida))
+        if (registeredBands.ContainsKey(checkedBand))
         {   
-            /*int somatorio = 0;
+            /*int summation = 0;
             int c = 0;
-            foreach (int nota in bandasRegistradas[bandaConferida])
+            foreach (int rate in registeredBands[checkedBand])
             {
-                somatorio += nota;
+                summation += r;
                 c++;
             }
             if (c == 0)
             {
-                Console.WriteLine($"A banda {bandaConferida} ainda não possui avaliações");
+                Console.WriteLine($"The band {checkedBand} doesn't have any ratings yet");
                 Thread.Sleep(1500);
                 Console.Clear();
-                MediaBandas();
+                BandsAverage();
             } else {
-                float mediaNotas = somatorio/c;
-                Console.WriteLine($"A banda {bandaConferida} possui nota {mediaNotas}");
+                float averages = summation/c;
+                Console.WriteLine($"The band {checkedBand} has a rating of {averages}");
                 Thread.Sleep(1500);
                 Console.Clear();
-                ExibirMenu();
+                ShowMenu();
             }*/
-            List<int> notasDaBanda = bandasRegistradas[bandaConferida];
-            double media = notasDaBanda.Average();
-            if (media == 0)
+            List<int> bandRating = registeredBands[checkedBand];
+            double average = bandRating.Average();
+            if (average == 0)
             {
-                Console.WriteLine($"A banda {bandaConferida} ainda não possui avaliações");
+                Console.WriteLine($"A band {checkedBand} doesn't have any ratings yet");
                 Thread.Sleep(1500);
                 Console.Clear();
-                MediaBandas();
+                BandsAverage();
             } else {
-                Console.WriteLine($"A banda {bandaConferida} possui em média a nota {media}");
+                Console.WriteLine($"The band {checkedBand} has a rating of {average}");
                 Thread.Sleep(1500);
                 Console.Clear();
-                ExibirMenu();
+                ShowMenu();
             }
         } else {
-            Console.WriteLine($"A banda {bandaConferida} não foi encontrada");
+            Console.WriteLine($"The band {checkedBand} was not found");
             Thread.Sleep(1500);
-            MediaBandas();
+            BandsAverage();
         }
     }
 }
 
-ExibirMenu();
+ShowMenu();
