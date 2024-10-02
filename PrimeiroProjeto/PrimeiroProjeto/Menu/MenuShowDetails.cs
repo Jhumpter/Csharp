@@ -5,6 +5,7 @@ internal class MenuShowDetails : Menu
 {
     public override void Execute(Dictionary<string, Band> registeredBands)
     {
+        base.Execute(registeredBands);
         OptionsTitle("Band ratings");
         Console.Write("Type a band to check the average rating (-1 to exit): ");
         string checkedBand = Console.ReadLine()!;

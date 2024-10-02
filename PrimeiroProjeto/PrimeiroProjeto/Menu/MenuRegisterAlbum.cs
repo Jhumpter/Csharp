@@ -5,6 +5,7 @@ class MenuRegisterAlbum : Menu
 {
     public override void Execute(Dictionary<string, Band> registeredBands)
     {
+        base.Execute(registeredBands);
         OptionsTitle("Album registration");
         Console.Write("Type the name of the band the album is from");
         string bandAlbumRegister = Console.ReadLine()!;

@@ -5,6 +5,7 @@ class MenuRegisterBand : Menu
 {
     public override void Execute(Dictionary<string, Band> registeredBands)
     {
+        base.Execute(registeredBands);
         OptionsTitle("Band registration");
         Console.Write("Type the band's name to register:");
         string bandName = Console.ReadLine()!;

@@ -6,6 +6,7 @@ class MenuRateBand : Menu
 {
     public override void Execute(Dictionary<string, Band> registeredBands)
     {
+        base.Execute(registeredBands);
         OptionsTitle("Rate Band");
         Console.Write("Type the band's name to rate (-1 to exit): ");
         string ratedBand = Console.ReadLine()!;

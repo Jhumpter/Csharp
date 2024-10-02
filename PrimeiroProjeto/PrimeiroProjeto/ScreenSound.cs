@@ -34,47 +34,22 @@ Type -1 to exit
     // It's possible to put "!" to indicate that a null value is not accepted
     int menuOption = int.Parse(Console.ReadLine()!);
     // int.Parse() to convert it into a integer
-    Dictionary<int, Menu> menuCall = new();
-    menuCall.Add(1, new MenuRegisterBand());
-    menuCall.Add(2, new MenuRegisterAlbum());
-    menuCall.Add(3, new MenuShowBands());
-    menuCall.Add(4, new MenuRateBand());
-    menuCall.Add(5, new MenuShowDetails());
-    menuCall.Add(-1, new MenuExit());
+    Dictionary<int, Menu> menuCall = new()
+    {
+        { 1, new MenuRegisterBand() },
+        { 2, new MenuRegisterAlbum() },
+        { 3, new MenuShowBands() },
+        { 4, new MenuRateBand() },
+        { 5, new MenuShowDetails() },
+        { -1, new MenuExit() }
+    };
     if (menuCall.ContainsKey(menuOption))
     {
         Menu menu = menuCall[menuOption];
+        menu.Execute(registeredBands);
+        if (menuOption != -1) ShowMenu();
     } else {
         Console.WriteLine("Invalid option");
-    }
-    
-    switch(menuOption)
-    {
-        case 1: 
-            MenuRegisterBand.RegisterBand(registeredBands);
-            ShowMenu();
-            break;
-        case 2: 
-            MenuRegisterAlbum.RegisterAlbum(registeredBands);
-            ShowMenu();
-            break;
-        case 3: 
-            MenuShowBands.ShowBands(registeredBands);
-            ShowMenu();
-            break;
-        case 4: 
-            MenuRateBand.RateBand(registeredBands);
-            ShowMenu();
-            break;
-        case 5: 
-            MenuShowDetails.ShowDetails(registeredBands);
-            ShowMenu();
-            break;
-        case -1: Console.WriteLine("See ya!");
-            Thread.Sleep(1500);
-            break;
-        default: 
-            break;
     }
 }
 

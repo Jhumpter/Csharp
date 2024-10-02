@@ -5,6 +5,7 @@ class MenuShowBands : Menu
 {
     public override void Execute(Dictionary<string, Band> registeredBands)
     {
+        base.Execute(registeredBands);
         OptionsTitle("Registered bands");
         /*for (int i = 0; i < registeredBands.Count; i++)
         {
