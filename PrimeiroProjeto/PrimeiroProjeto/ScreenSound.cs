@@ -26,7 +26,8 @@ Type 1 to add a band
 Type 2 to register an album for a band
 Type 3 to show all the bands
 Type 4 to rate a band
-Type 5 to show a band's details
+Type 5 to rate an album
+Type 6 to show a band's details
 Type -1 to exit
 ");
     Console.Write("\nType your option: ");
@@ -40,7 +41,8 @@ Type -1 to exit
         { 2, new MenuRegisterAlbum() },
         { 3, new MenuShowBands() },
         { 4, new MenuRateBand() },
-        { 5, new MenuShowDetails() },
+        { 5, new MenuRateAlbum() },
+        { 6, new MenuShowDetails() },
         { -1, new MenuExit() }
     };
     if (menuCall.ContainsKey(menuOption))

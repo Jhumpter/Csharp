@@ -7,11 +7,11 @@ class MenuRegisterAlbum : Menu
     {
         base.Execute(registeredBands);
         OptionsTitle("Album registration");
-        Console.Write("Type the name of the band the album is from");
+        Console.Write("Type the name of the band the album is from: ");
         string bandAlbumRegister = Console.ReadLine()!;
         if (registeredBands.ContainsKey(bandAlbumRegister))
         {
-            Console.Write("Now, type the album's name");
+            Console.Write("Now, type the album's name: ");
             string albumTitle = Console.ReadLine()!;
             Band band = registeredBands[bandAlbumRegister];
             band.AddAlbum(new Album(albumTitle));

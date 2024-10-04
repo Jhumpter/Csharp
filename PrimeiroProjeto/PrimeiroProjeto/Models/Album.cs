@@ -1,8 +1,9 @@
 namespace PrimeiroProjeto.Models;
 
-internal class Album
+internal class Album : IAssessable
 {
     private List<Song> songs = new List<Song>();
+    private List<Reviews> ratings = new();
     public Album(string name)
     {
         Name = name;
@@ -10,6 +11,21 @@ internal class Album
     public string Name { get; }
     public int TotalDuration => songs.Sum(m => m.Duration);
     public List<Song> Songs => songs;
+
+    public double Average 
+    {
+        get
+        {
+            if(ratings.Count() == 0) return 0;
+            else return ratings.Average(a => a.Rating);
+        }
+    }
+
+    public void AddRating(Reviews rating)
+    {
+        ratings.Add(rating);
+    }
+
     public void AddSong(Song song)
     {
         songs.Add(song);

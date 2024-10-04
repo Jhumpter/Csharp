@@ -17,7 +17,7 @@ class MenuRateBand : Menu
             if (registeredBands.ContainsKey(ratedBand))
             {   
                 Band band = registeredBands[ratedBand];
-                Console.Write($"What rating do you give to {ratedBand}?");
+                Console.Write($"What rating do you give to {ratedBand}? ");
                 Reviews rating = Reviews.Parse(Console.ReadLine()!);
                 band.AddRating(rating);
                 Console.WriteLine($"The rating {rating.Rating} was registered for the band {ratedBand} successfully!");

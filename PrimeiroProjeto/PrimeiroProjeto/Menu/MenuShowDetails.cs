@@ -16,9 +16,15 @@ internal class MenuShowDetails : Menu
             if (registeredBands.ContainsKey(checkedBand))
             {   
                 Band band = registeredBands[checkedBand];
-                    Console.WriteLine($"The band {checkedBand} has a rating of {band.Average}");
-                    Thread.Sleep(1500);
-                    Console.Clear();
+                Console.WriteLine($"\nThe band {checkedBand} has a rating of {band.Average}");
+                Console.WriteLine("\n-Discography:");
+                foreach (Album album in band.Albums)
+                {
+                    Console.WriteLine($"{album.Name} ({album.Average})");
+                }
+                Console.WriteLine("\nType anything to go back to the menu");
+                Console.ReadKey();
+                Console.Clear();
             } else {
                 Console.WriteLine($"The band {checkedBand} was not found");
                 Thread.Sleep(1500);

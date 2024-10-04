@@ -1,8 +1,6 @@
-using System.Data.Common;
-
 namespace PrimeiroProjeto.Models;
 
-internal class Band
+internal class Band : IAssessable
 {   
     private List<Album> albums = new List<Album>();
     private List<Reviews> ratings = new();

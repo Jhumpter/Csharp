@@ -7,7 +7,7 @@ class MenuRegisterBand : Menu
     {
         base.Execute(registeredBands);
         OptionsTitle("Band registration");
-        Console.Write("Type the band's name to register:");
+        Console.Write("Type the band's name to register: ");
         string bandName = Console.ReadLine()!;
         Band band = new Band(bandName);
         registeredBands.Add(bandName, band); //.Add to add the (element)
