@@ -3,19 +3,18 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PrimeiroProjeto", "PrimeiroProjeto\PrimeiroProjeto.csproj", "{28B9C1D9-54F2-4504-A905-12CAE1E77004}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PrimeiroProjeto", "PrimeiroProjeto\PrimeiroProjeto.csproj", "{28B9C1D9-54F2-4504-A905-12CAE1E77004}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "POO", "POO\POO.csproj", "{2AD00708-3A86-40A9-9ED8-A4C9371E016D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "POO", "POO\POO.csproj", "{2AD00708-3A86-40A9-9ED8-A4C9371E016D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Escola", "Escola\Escola.csproj", "{F5482153-FDD9-4C8C-888A-932D7E9B4174}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Escola", "Escola\Escola.csproj", "{F5482153-FDD9-4C8C-888A-932D7E9B4174}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ScreenSoundAPI", "..\..\..\..\source\repos\ScreenSoundAPI\ScreenSoundAPI\ScreenSoundAPI.csproj", "{7ACC46E0-9C14-46C0-B58B-AA1DC6AC8B15}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
-	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{28B9C1D9-54F2-4504-A905-12CAE1E77004}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -30,5 +29,15 @@ Global
 		{F5482153-FDD9-4C8C-888A-932D7E9B4174}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F5482153-FDD9-4C8C-888A-932D7E9B4174}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F5482153-FDD9-4C8C-888A-932D7E9B4174}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7ACC46E0-9C14-46C0-B58B-AA1DC6AC8B15}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7ACC46E0-9C14-46C0-B58B-AA1DC6AC8B15}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7ACC46E0-9C14-46C0-B58B-AA1DC6AC8B15}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7ACC46E0-9C14-46C0-B58B-AA1DC6AC8B15}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {577AEB96-A21E-45CC-81A1-5895A12B1DC5}
 	EndGlobalSection
 EndGlobal
