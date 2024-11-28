@@ -11,6 +11,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Escola", "Escola\Escola.csp
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ScreenSoundAPI", "..\..\..\..\source\repos\ScreenSoundAPI\ScreenSoundAPI\ScreenSoundAPI.csproj", "{7ACC46E0-9C14-46C0-B58B-AA1DC6AC8B15}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScreenSoundAPI", "ScreenSoundAPI\ScreenSoundAPI.csproj", "{145D0612-4E42-4855-812B-11524F413C75}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{7ACC46E0-9C14-46C0-B58B-AA1DC6AC8B15}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7ACC46E0-9C14-46C0-B58B-AA1DC6AC8B15}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7ACC46E0-9C14-46C0-B58B-AA1DC6AC8B15}.Release|Any CPU.Build.0 = Release|Any CPU
+		{145D0612-4E42-4855-812B-11524F413C75}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{145D0612-4E42-4855-812B-11524F413C75}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{145D0612-4E42-4855-812B-11524F413C75}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{145D0612-4E42-4855-812B-11524F413C75}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
