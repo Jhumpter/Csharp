@@ -24,4 +24,13 @@ internal class LinqFilter
             Console.WriteLine(artist);
         }
     }
+
+    public static void FilterSongsByArtist(List<Song> songs, string artist)
+    {
+        var songsByArtist = songs.Where(song => song.Artist!.Equals(artist)).ToList();
+        foreach(var song in songsByArtist)
+        {
+            Console.WriteLine(song.Name);
+        }
+    }
 }
